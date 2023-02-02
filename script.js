@@ -2,19 +2,23 @@ const winArray = [[0, 2, 1],
 [1, 0, 2],
 [2, 1, 0]];
 
-var playerScore = 0;
-var compScore = 0;
-var playerChoice;
-var clicknum = 0;
+let playerScore = 0;
+let compScore = 0;
+let playerChoice;
+let clicknum = 0;
 const buttons = document.querySelectorAll('.btn');
 buttons.forEach(button => {
     button.addEventListener('click', () => {
-        console.log("YOU CLICKED "+clicknum);
+        console.log("YOU CLICKED " + clicknum);
         clicknum++;
         playerChoice = button.id;
         playGame();
     })
 });
+const pscore = document.querySelector("#p-score");
+pscore.textContent = `Player Score : ${playerScore}`;
+const cscore = document.querySelector("#c-score");
+cscore.textContent = `Computer Score : ${compScore}`;
 function getComputerChoice() {
     return Math.floor(Math.random() * 2);
 }
@@ -43,4 +47,6 @@ function playGame() {
         playerScore = 0;
         compScore = 0;
     }
+    console.log("Player Score : " + playerScore);
+    console.log("Comp Score " + compScore);
 }
